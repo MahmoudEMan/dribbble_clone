@@ -33,7 +33,7 @@ const Button = ({
     onClick={handleClick}
   >
     {leftIcon && (
-      <Image src={leftIcon} width={14} height={14} alt="left icon" />
+      <Image src={leftIcon} width={14} height={14} alt="left icon" />z
     )}
     {title}
     {rightIcon && (
