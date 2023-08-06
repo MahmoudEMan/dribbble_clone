@@ -7,7 +7,7 @@ const User = g.model("User", {
   description: g.string().length({ min: 2, max: 1000 }).optional(),
   githubUrl: g.url().optional(),
   linkedinUrl: g.url().optional(),
-  projects: g
+  project: g
     .relation(() => Project)
     .list()
     .optional(),
