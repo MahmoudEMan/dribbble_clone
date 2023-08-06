@@ -6,7 +6,7 @@ import AuthProviders from "./AuthProviders";
 import Button from "./UI/Button";
 
 export default function Navbar() {
-  const session = [];
+  const session = null;
 
   return (
     <nav className="flexBetween navbar">
