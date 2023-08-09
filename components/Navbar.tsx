@@ -1,12 +1,17 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { NavLinks } from "@/constant";
 import AuthProviders from "./AuthProviders";
 import Button from "./UI/Button";
+import { signOut, useSession } from "next-auth/react";
+import ProfileMenu from "./ProfileMenu";
+import { SessionInterface } from "@/common.types";
 
-export default function Navbar() {
-  const session = null;
+const Navbar = () => {
+  const { data: session }: { data: SessionInterface } = useSession();
+  console.log("zed ~ file: Navbar.tsx:11 ~ Navbar ~ session:", session);
 
   return (
     <nav className="flexBetween navbar">
@@ -23,13 +28,14 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="flexCenter gap-4">
-        {session ? (
+        {session?.user ? (
           <>
-            {/* <ProfileMenu session={session} /> */}
-
-            <Link href="/create-project">
-              <Button title="Share work" />
-            </Link>
+            <ProfileMenu session={session} />
+            <div className="flex gap-4">
+              <Link href="/create-project">
+                <Button title="Share work" />
+              </Link>
+            </div>
           </>
         ) : (
           <AuthProviders />
@@ -37,4 +43,5 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
+export default Navbar;

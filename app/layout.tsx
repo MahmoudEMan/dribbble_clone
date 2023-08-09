@@ -5,6 +5,7 @@ export const metadata = {
   title: "Flexibble",
   description: "Showcase and discover remarkable developer projects",
 };
+import Providers from "@/components/Providers";
 
 export default function RootLayout({
   children,
@@ -14,9 +15,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <Providers>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
