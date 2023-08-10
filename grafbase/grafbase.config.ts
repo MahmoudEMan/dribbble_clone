@@ -28,6 +28,7 @@ const Project = g
     githubUrl: g.url(),
     category: g.string().search(),
     createdBy: g.relation(() => User),
+    comment: g.string(),
   })
   .auth((rules) => {
     rules.public().read();

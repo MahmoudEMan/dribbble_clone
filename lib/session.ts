@@ -5,10 +5,8 @@ import GoogleProvider from "next-auth/providers/google";
 import jsonwebtoken from "jsonwebtoken";
 import { JWT } from "next-auth/jwt";
 
-// import { createUser, getUser } from "./actions";
-import { SessionInterface, UserProfile } from "@/common.types";
-import { error } from "console";
 import { createUser, getUser } from "./actions";
+import { SessionInterface, UserProfile } from "@/common.types";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -66,10 +64,6 @@ export const authOptions: NextAuthOptions = {
         const userExists = (await getUser(user?.email as string)) as {
           user?: UserProfile;
         };
-        console.log(
-          "zed ~ file: session.ts:69 ~ userExists ~ userExists:",
-          userExists
-        );
 
         if (!userExists.user) {
           await createUser(
@@ -81,7 +75,7 @@ export const authOptions: NextAuthOptions = {
 
         return true;
       } catch (error: any) {
-        console.log(error);
+        console.log(`errorrrrrrrrrrrrrrrrrrrrrrr`, error);
         return false;
       }
     },
