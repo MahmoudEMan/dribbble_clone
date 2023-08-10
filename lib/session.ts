@@ -10,10 +10,9 @@ import { SessionInterface, UserProfile } from "@/common.types";
 
 export const authOptions: NextAuthOptions = {
   providers: [
-    //...add more providers here
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
   jwt: {
@@ -75,15 +74,15 @@ export const authOptions: NextAuthOptions = {
 
         return true;
       } catch (error: any) {
-        console.log(`errorrrrrrrrrrrrrrrrrrrrrrr`, error);
+        console.log("Error checking if user exists: ", error.message);
         return false;
       }
     },
   },
 };
+
 export async function getCurrentUser() {
   const session = (await getServerSession(authOptions)) as SessionInterface;
-  console.log(`getCurrentUser`, session);
 
   return session;
 }

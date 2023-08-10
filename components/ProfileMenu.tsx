@@ -10,6 +10,19 @@ import { SessionInterface } from "@/common.types";
 
 const ProfileMenu = ({ session }: { session: SessionInterface }) => {
   const [openModal, setOpenModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSignOut = async () => {
+    setLoading(true);
+
+    try {
+      await signOut(); // Perform the sign-out action
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+
+    setLoading(false);
+  };
 
   return (
     <div className="flexCenter z-10 flex-col relative">
@@ -86,11 +99,12 @@ const ProfileMenu = ({ session }: { session: SessionInterface }) => {
             <div className="w-full flexStart border-t border-nav-border mt-5 pt-5">
               <Menu.Item>
                 <button
+                  disabled={loading}
                   type="button"
                   className="text-sm"
-                  onClick={() => signOut()}
+                  onClick={() => handleSignOut()}
                 >
-                  Sign out
+                  {loading ? "Signing out" : "Sign out"}
                 </button>
               </Menu.Item>
             </div>
