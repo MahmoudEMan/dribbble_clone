@@ -31,13 +31,8 @@ export const revalidate = 0;
 
 const Home = async ({ searchParams: { category, endcursor } }: Props) => {
   const data = (await fetchAllProjects(category, endcursor)) as ProjectSearch;
-  console.log("🚀 ~ file: page.tsx:34 ~ Home ~ data:", data);
 
   const projectsToDisplay = data?.projectSearch?.edges || [];
-  console.log(
-    "projectsToDisplay ~ file: page.tsx:36 ~ Home ~ projectsToDisplay:",
-    projectsToDisplay
-  );
 
   if (projectsToDisplay.length === 0) {
     return (
