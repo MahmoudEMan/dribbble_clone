@@ -30,10 +30,7 @@ export const dynamicParams = true;
 export const revalidate = 0;
 
 const Home = async ({ searchParams: { category, endcursor } }: Props) => {
-  const data = (await fetchAllProjects(
-    category ? category : "Frontend",
-    endcursor
-  )) as ProjectSearch;
+  const data = (await fetchAllProjects(category, endcursor)) as ProjectSearch;
 
   const projectsToDisplay = data?.projectSearch?.edges || [];
 
@@ -60,6 +57,7 @@ const Home = async ({ searchParams: { category, endcursor } }: Props) => {
             id={node?.id}
             image={node?.image}
             title={node?.title}
+            category={node?.category}
             name={node?.createdBy.name}
             avatarUrl={node?.createdBy.avatarUrl}
             userId={node?.createdBy.id}

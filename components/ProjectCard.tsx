@@ -13,7 +13,15 @@ type Props = {
   userId: string;
 };
 
-const ProjectCard = ({ id, image, title, name, avatarUrl, userId }: Props) => {
+const ProjectCard = ({
+  id,
+  image,
+  title,
+  name,
+  avatarUrl,
+  userId,
+  category,
+}: Props) => {
   const [randomLikes, setRandomLikes] = useState(0);
   const [randomViews, setRandomViews] = useState("");
 
@@ -58,6 +66,9 @@ const ProjectCard = ({ id, image, title, name, avatarUrl, userId }: Props) => {
             <p>{name}</p>
           </div>
         </Link>
+        <div className="  ">
+          <p className="w-full">{category}</p>
+        </div>
 
         <div className="flexCenter gap-3">
           <div className="flexCenter gap-2">
