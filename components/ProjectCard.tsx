@@ -11,6 +11,7 @@ type Props = {
   name: string;
   avatarUrl: string;
   userId: string;
+  category: string;
 };
 
 const ProjectCard = ({
