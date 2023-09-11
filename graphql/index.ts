@@ -134,6 +134,7 @@ export const getProjectsOfUserQuery = `
             id
             title
             image
+            category
           }
         }
       }

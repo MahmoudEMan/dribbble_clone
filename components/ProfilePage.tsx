@@ -76,7 +76,7 @@ const ProfilePage = ({ user }: Props) => {
                   image={node?.image}
                   title={node?.title}
                   name={user.name}
-                  category={""}
+                  category={node?.category}
                   avatarUrl={user.avatarUrl}
                   userId={user.id}
                 />
