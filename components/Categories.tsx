@@ -3,13 +3,20 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { categoryFilters } from "@/constant";
+import { useEffect } from "react";
 
 const Categories = () => {
   const router = useRouter();
   const pathName = usePathname();
+
   const searchParams = useSearchParams();
 
   const category = searchParams.get("category");
+
+  useEffect(() => {
+    !searchParams.get("category") &&
+      router.push(`${pathName}?category=${"Frontend"}`);
+  }, [searchParams]);
 
   const handleTags = (item: string) => {
     router.push(`${pathName}?category=${item}`);
